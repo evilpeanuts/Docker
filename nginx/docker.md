@@ -35,6 +35,44 @@ docker run -itd --name redis -p 6379:6379 -appendonly yes \
 redis
 
 `
+
+
+# docker window mysql 8 Server
+`
+docker run -itd --name mysql8019 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:8.0.19
+
+#--mount type=bind,source=E:/Study/Mysql/8/conf/my.cnf,target=/etc/mysql/my.cnf
+#--mount type=bind,source=E:/Study/Mysql/8/conf/conf.d,target=/etc/mysql/conf.d 
+#--mount type=bind,source=E:/Study/Mysql/8/data,target=/var/lib/mysql
+
+`
+
+# docker window mysql 5.7.27 Server
+`
+docker run -itd --name mysql5727 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -v E:/Study/Mysql/5.7.27/conf/:/etc/mysql/ -v E:/Study/Mysql/5.7.27/data:/var/lib/mysql  -v E:/Study/Mysql/5.7.27/logs:/var/log/mysql mysql:5.7.27
+`
+
+# docker window mysqls connect 5.7.27 Server
+`
+docker run -it --network host --rm mysql:5.7.27 mysql -h 127.0.0.1 -p3306 --default-character-set=utf8mb4 -uroot -p
+`
+
+#
+
+# docker window redis 5.7.27 Server
+`
+docker run -itd --name redis507 -p 6379:6379 redis:5.0.7
+
+#
+
+
+# docker window redis 5.7.27 Server
+`
+docker run -it --network host --rm redis:5.0.7 redis-cli
+
+#
+
+`
 # 进入正在运行的容器
 docker exec -it id /bin/bash  
 
