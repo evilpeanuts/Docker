@@ -1,1 +1,4 @@
 nginx/log/*
+nacos/logs/*
+mysql/5.7/data/*
+mysql/5.7/log/*
