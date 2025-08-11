@@ -16,7 +16,7 @@ services:
           memory: 256M      # 至少预留 256MB 内存
     # 绑定到特定 CPU 核心（可选）
     cpuset: "1"  # "0,1" 仅允许使用主机的 0 和 1 号核心
-    # restart: always
+    restart: always
     ports:
       - "80:80"    # HTTP 端口映射
       - "443:443"  # HTTPS 端口映射（如需使用 SSL 证书）
