@@ -4,6 +4,18 @@ services:
   redis:
     image: redis:7.4.5
     container_name: redis-server-7.4.5
+    deploy:
+      resources:
+        # 硬性限制（容器最多能使用的资源）
+        limits:
+          cpus: '1.0'       # 最多 1 个 CPU 核心
+          memory: 512M      # 最多 512MB 内存
+        # 软性预留（保证容器至少能获得的资源）
+        reservations:
+          cpus: '0.5'       # 至少预留 0.5 个 CPU 核心
+          memory: 256M      # 至少预留 256MB 内存
+    # 绑定到特定 CPU 核心（可选）
+    cpuset: "2"  # "0,1" 仅允许使用主机的 0 和 1 号核心
     restart: always
     command: redis-server /usr/local/etc/redis/redis.conf
     volumes:
