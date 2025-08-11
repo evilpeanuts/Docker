@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0.25
+    container_name: mysql-server-8.0.25
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=default_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=123456
+    volumes:
+      - ./data:/var/lib/mysql        # 数据持久化目录
+      - ./conf:/etc/mysql/conf.d      # 配置文件共享目录
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p123456"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    

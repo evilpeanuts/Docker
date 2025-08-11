@@ -39,7 +39,7 @@ redis
 
 # docker window mysql 8 Server
 `
-docker run -itd --name mysql8019 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:8.0.19
+docker run -itd --name mysql-8.0.25 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:8.0.25
 
 #--mount type=bind,source=E:/Study/Mysql/8/conf/my.cnf,target=/etc/mysql/my.cnf
 #--mount type=bind,source=E:/Study/Mysql/8/conf/conf.d,target=/etc/mysql/conf.d 

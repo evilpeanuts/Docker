@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:1.29.0
+    container_name: nginx-server-1.29.0
+    # restart: always
+    ports:
+      - "80:80"    # HTTP 端口映射
+      - "443:443"  # HTTPS 端口映射（如需使用 SSL 证书）
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d        # Nginx 配置文件目录
+      # - ./nginx/ssl:/etc/nginx/ssl            # SSL 证书目录（可选）
+      # - ./nginx/logs:/var/log/nginx           # 日志目录
+      - ./html:/usr/share/nginx/html    # 网站根目录
+    environment:
+      - TZ=Asia/Shanghai                      # 设置时区为上海
+    networks:
+      - nginx-network
+
+networks:
+  nginx-network:
+    driver: bridge
